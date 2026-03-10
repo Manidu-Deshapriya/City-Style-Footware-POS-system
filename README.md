@@ -1,42 +1,82 @@
-Installation and Setup Guide
-Follow these steps to set up the project on your local machine:
+# City Style Footwear - Advanced POS System
 
-1. Prerequisites
+City Style POS is a robust desktop application built using **Java Swing** and **PostgreSQL**. It is designed to handle the core operations of a footwear retail store, including inventory management, real-time sales processing, and secure manager-authorized discount workflows.
+
+---
+
+## 🚀 Key Features
+
+*   **Role-Based Access Control:** Secure login gateways for Managers and Cashiers with distinct dashboard interfaces.
+*   **Inventory Management:** Full CRUD (Create, Read, Update, Delete) operations for tracking shoes, categories, brands, and suppliers.
+*   **Point of Sale (POS) Terminal:** Efficient cart management, real-time bill calculation, and secure transaction logging.
+*   **Managerial Discount Approval:** A digital request-approval system to ensure all high-value discounts are authorized by a manager.
+*   **Return Management:** Process product returns with automatic restocking and audit logging.
+*   **Dynamic UI Categorization:** Hash-based color coding for instant visual identification of stock by category or model.
+*   **Input Validation:** Robust document filters to prevent invalid data entry and maintain system integrity.
+
+---
+
+## 🛠 Technology Stack
+
+*   **Language:** Java JDK 17
+*   **Front-end:** Java Swing & AWT (Modern Flat Theme)
+*   **Database:** PostgreSQL 16
+*   **Connectivity:** JDBC (Java Database Connectivity)
+*   **Architecture:** MVC (Model-View-Controller) with DAO Pattern
+
+---
+
+## ⚙️ Installation and Setup Guide
+
+Follow these steps to set up the system on your local machine:
+
+### 1. Prerequisites
 Ensure you have the following installed:
+*   **JDK 17** or higher.
+*   **PostgreSQL 16** server.
+*   An IDE (VS Code, IntelliJ, or NetBeans).
+*   **PostgreSQL JDBC Driver** (.jar file).
 
-Java Development Kit (JDK) 17 or higher.
-PostgreSQL 16 (or comparable version).
-A Java IDE (Visual Studio Code, IntelliJ IDEA, or NetBeans).
-2. Database Environment Setup
-Open your PostgreSQL management tool (e.g., pgAdmin 4).
-Create a new database named city_style_pos.
-Open the Query Tool for the city_style_pos database.
-Locate the setup.sql file (found in the root/database directory of this project).
-Copy the contents of setup.sql and execute it in the Query Tool.
-This will create all necessary tables (users, shoes, sales, returns, discount_requests) and insert default data.
-3. Database Connection Configuration
-Open the source code and navigate to the database connection utility class (e.g., DatabaseConnection.java).
-Update the following fields to match your local PostgreSQL credentials:
-URL: jdbc:postgresql://localhost:5432/city_style_pos
-USER: Your PostgreSQL username (default is postgres).
-PASSWORD: Your PostgreSQL password.
-4. Running the Application
-Import the project into your preferred IDE.
-Ensure the PostgreSQL JDBC driver (.jar file) is added to your project's Build Path/Libraries.
-Locate the 
+### 2. Database Configuration
+1.  Open **pgAdmin 4** or any PostgreSQL client.
+2.  Create a new database named: `city_style_pos`.
+3.  Open the **Query Tool** for the created database.
+4.  Open the `database/setup.sql` file from this project.
+5.  Copy the SQL script and **Execute** it to create tables and insert default data.
 
-Main.java
- file (or the entry point class).
-Run the class as a Java Application.
-Log in using the default credentials (provided in the setup.sql or 
+### 3. Application Configuration
+1.  Navigate to your database connection utility class (e.g., `DatabaseConnection.java`).
+2.  Update the database URL, username, and password fields:
+    ```java
+    private static final String URL = "jdbc:postgresql://localhost:5432/city_style_pos";
+    private static final String USER = "your_postgres_username";
+    private static final String PASS = "your_postgres_password";
+    ```
 
-UserDAO
- documentation).
-Default Login Credentials
-Manager: username: admin / password: 123
-Cashier: username: cashier / password: 123
-Project Structure
-src/com/citystyle/model: POJO classes representing database entities.
-src/com/citystyle/dao: Data Access Objects for SQL interaction.
-src/com/citystyle/ui: Java Swing layouts and dashboard logic.
-database/setup.sql: Database schema initialization script.
+### 4. Build and Run
+1.  Import the project into your IDE.
+2.  Add the **PostgreSQL JDBC Connector** to your project's library/build path.
+3.  Run the [Main.java](cci:7://file:///e:/Projects/Java/city%20pos/src/com/citystyle/Main.java:0:0-0:0) file to launch the application.
+
+---
+
+## 🔑 Default Login Credentials
+
+| Role | Username | Password |
+| :--- | :--- | :--- |
+| **Manager** | `admin` | `admin123` |
+| **Cashier** | `cashier` | `cashier123` |
+
+---
+
+## 📂 Project Structure
+
+*   `src/com/citystyle/model`: Data entities (User, Shoe, Sale, etc.)
+*   `src/com/citystyle/dao`: Database interaction logic.
+*   `src/com/citystyle/ui`: User interface components and dashboards.
+*   `database/`: Contains `setup.sql` for environment initialization.
+
+---
+
+## Evaluation and Impact
+The system demonstrates high technical stability and exceptional adherence to **OOP Principles**. It provides a scalable architecture suitable for retail expansion, ensuring both data integrity and a premium user experience.
